@@ -1,0 +1,96 @@
+plugins {
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "org.sonarqube" version "4.0.0.2929"
+    id "com.diffplug.spotless" version "6.21.0"
+    id 'jacoco'
+    id 'java'
+}
+
+group = 'org.freightfox.transporter'
+version = '1.0.0'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Lombok for reducing boilerplate code
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    //swagger for api documentation
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.mockito:mockito-core'
+    testImplementation 'org.mockito:mockito-junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "TransporterLaneApplication"
+        property "sonar.projectKey", "TransporterLaneApplication"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/java"
+        property "sonar.login", "admin"
+        property "sonar.password", "Sonarqube@14"
+        property "sonar.tests", "src/test/java"
+        property "sonar.java.binaries", "build/classes"
+        property "sonar.java.test.binaries", "build/classes/java/test"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml"
+        property "sonar.junit.reportPaths", "build/test-results/test"
+        property "sonar.coverage.exclusions", "**/model/**, **/config/**, **/dto/**, **/fileproperties/**, **/exceptions/**, **/filter/**, **/scheduler/**"
+        property "sonar.exclusions", "**/model/**, **/config/**, **/dto/**, **/fileproperties/**, **/exceptions/**, **/filter/**, **/scheduler/**"
+    }
+}
+
+
+spotless {
+    java {
+        target("src/**/*.java")
+        googleJavaFormat()
+        importOrder("java", "javax", "org", "com")
+        removeUnusedImports()
+    }
+
+    format("misc") {
+        target("**/*.md", "**/*.gradle", "**/*.yml")
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.10"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    finalizedBy 'jacocoTestReport'
+}
+
+tasks.named('jacocoTestReport') {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = false
+        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
+    }
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
