@@ -20,7 +20,8 @@ The Transporter Assignment on Lanes project is a Spring Boot application that op
 4. **API Testing**📡</br>
    Swagger UI →**http://localhost:8080/swagger-ui/index.html**</br>
    Postman Example:</br>
-   curl -X 'POST' **'http://localhost:8080/api/v1/toll-plazas'** -H 'Content-Typ</br></br>
+  curl -X 'POST' '**http://localhost:8080/api/v1/transporters/input**'</br>
+  curl -X 'POST' '**http://localhost:8080/api/v1/transporters/assignmen**t'</br></br>
 
 5. **SonarQube Configuration (Code Quality & Test Coverage)** 📊</br>
    1. Running SonarQube Installed on Your Machine</br>
