@@ -30,7 +30,7 @@ The Transporter Assignment on Lanes project is a Spring Boot application that op
       3. Run SonarQube Analysis:<br>
           ./gradlew sonarqube</br>
       4. View Reports in Browser:<br>
-          Open http://localhost:9000/dashboard?id=TollPlazaFinder</br>
+          Open **http://localhost:9000/dashboard?id=TransporterLane**</br>
       
    2. Running SonarQube in Docker</br>
       1. Start SonarQube in Docker:<br>
@@ -38,7 +38,7 @@ The Transporter Assignment on Lanes project is a Spring Boot application that op
       2. Run the Analysis:<br>
           ./gradlew sonarqube<br>
       3. Check Reports:<br>
-          Open http://localhost:9000/dashboard?id=TollPlazaFinder<br>
+          Open **http://localhost:9000/dashboard?id=TransporterLane**<br>
 
 
 
