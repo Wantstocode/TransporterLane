@@ -3,7 +3,7 @@ The Transporter Assignment on Lanes project is a Spring Boot application that op
 
 ## 🚀 How to Run the Project
 
-1.**Clone the Repository**📥</br>
+1. **Clone the Repository**📥</br>
    git clone https://github.com/YourGitHubUsername/TransporterLane.git</br>
    cd TransporterLane</br></br>
    
@@ -20,8 +20,8 @@ The Transporter Assignment on Lanes project is a Spring Boot application that op
 4. **API Testing**📡</br>
    Swagger UI →**http://localhost:8080/swagger-ui/index.html**</br>
    Postman Example:</br>
-  curl -X 'POST' '**http://localhost:8080/api/v1/transporters/input**'</br>
-  curl -X 'POST' '**http://localhost:8080/api/v1/transporters/assignmen**t'</br></br>
+     curl -X 'POST' '**http://localhost:8080/api/v1/transporters/input**'</br>
+     curl -X 'POST' '**http://localhost:8080/api/v1/transporters/assignment**'</br></br>
 
 5. **SonarQube Configuration (Code Quality & Test Coverage)** 📊</br>
    1. Running SonarQube Installed on Your Machine</br>
